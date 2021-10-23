@@ -1,4 +1,4 @@
-from typing import Final
+from typing import Final	
 
 class Adder:
     staticmethod
@@ -83,6 +83,6 @@ for i in range(1, iterations_count):
 
 """Save to txt file area"""
 _file = open("output.txt", 'w')
-for i in range(0, iterations_count)
+for i in range(0, iterations_count):
     _file.write(i + ": ", x[i] + ", " + y[i] + "\n")
 """End of save to txt file area"""
