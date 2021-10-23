@@ -1,5 +1,6 @@
 from typing import Final
 import matplotlib.pyplot as plt
+import numpy as np
 
 class Adder:
     staticmethod
@@ -74,6 +75,7 @@ inertionLink_3 = InertionLink()
 iterations_count = int(iterations_count)
 
 for i in range(0, iterations_count):
+    x.append(np.random.randint(-1*DELTA,DELTA+1))
     intermediateValue = Adder.Sum(x[i], intermediateValue)
     intermediateValue = Amplifier.Amplify(K1, intermediateValue)
     intermediateValue = inertionLink_1.GetValue(intermediateValue, T1, i)
