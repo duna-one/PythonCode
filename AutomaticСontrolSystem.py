@@ -1,4 +1,4 @@
-from typing import final
+from typing import Final
 import matplotlib.pyplot as plt
 
 class Adder:
@@ -50,13 +50,13 @@ DELTA: Final = 1
 while(True):
     print("Use the standard values K1 and K2?(Y/N)")
     inputValue = input()
-    if inputValue == 'Y':
+    if inputValue == 'N':
         print("Enter K1:")
         K1 = int(input())
         print("Enter K2:")
         K2 = int(input())
         break
-    elif inputValue == 'N':
+    elif inputValue == 'Y':
         print("The standard values K1=4 and K2=-0.2 are used")
         break
     else:
@@ -71,8 +71,9 @@ intermediateValue = 0
 inertionLink_1 = InertionLink()
 inertionLink_2 = InertionLink()
 inertionLink_3 = InertionLink()
+iterations_count = int(iterations_count)
 
-for i in range(1, iterations_count):
+for i in range(0, iterations_count):
     intermediateValue = Adder.Sum(x[i], intermediateValue)
     intermediateValue = Amplifier.Amplify(K1, intermediateValue)
     intermediateValue = inertionLink_1.GetValue(intermediateValue, T1, i)
@@ -85,12 +86,12 @@ for i in range(1, iterations_count):
 """Save to txt file area"""
 _file = open("output.txt", 'w')
 for i in range(0, iterations_count):
-    _file.write(i + ": ", x[i] + ", " + y[i] + "\n")
+    _file.write(str(i) + ": " + str(x[i]) + ", " + str(y[i]) + "\n")
 """End of save to txt file area"""
 
 """Grafical output area"""
 print("Input values are black, output values are red")
-i = range(1, iterations_count)
+i = range(0, iterations_count)
 plt.plot(i, x, color = 'k')
 plt.plot(i, y, color = 'r')
 plt.show()
