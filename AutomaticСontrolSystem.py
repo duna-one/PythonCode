@@ -6,8 +6,29 @@ T1: Final = 0.1
 T2: Final = 0.01
 T3: Final = 0.01
 DELTA: Final = 1 
-w = []
-v = []
+
+class Adder:
+    staticmethod
+    def Sum(a, b):
+        return a+b
+
+class Amplifier:
+    staticmethod
+    def Amplify(K, value):
+        return K*value
+
+class InertionLink:
+
+    def __init__(self):
+        self.w = []
+    pass
+    
+    def GetValue(self, value, T, i):
+        if i-1<=0:
+            self.w.append((value + 0 * T) / (1 + T))            
+        else:
+            self.w.append((value + self.w[i-1] * T)/(1 + T))
+        return self.w[i]
 
 """Data input area"""
 while(True):
@@ -40,3 +61,7 @@ while(True):
         print("Incorrect input.")
         continue
 """End of data input area"""
+
+"""Magic Area"""
+
+"""End of magic Area"""
