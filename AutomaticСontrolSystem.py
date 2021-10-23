@@ -80,3 +80,9 @@ for i in range(1, iterations_count):
     y.append(intermediateValue)
     intermediateValue = Amplifier.Amplify(K2, intermediateValue)
 """End of magic Area"""
+
+"""Save to txt file area"""
+_file = open("output.txt", 'w')
+for i in range(0, iterations_count)
+    _file.write("X[" + i "]: " + x[i] + " : " + "Y[" + i + "]: " + y[i] + "\n")
+"""End of save to txt file area"""
