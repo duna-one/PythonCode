@@ -1,12 +1,5 @@
 from typing import Final
 
-K1 = 4
-K2 = -0.2
-T1: Final = 0.1
-T2: Final = 0.01
-T3: Final = 0.01
-DELTA: Final = 1 
-
 class Adder:
     staticmethod
     def Sum(a, b):
@@ -45,6 +38,14 @@ while(True):
     else:
         break
 
+
+K1 = 4
+K2 = -0.2
+T1: Final = 0.1
+T2: Final = 0.01
+T3: Final = 0.01
+DELTA: Final = 1 
+
 while(True):
     print("Use the standard values K1 and K2?(Y/N)")
     inputValue = input()
@@ -63,5 +64,19 @@ while(True):
 """End of data input area"""
 
 """Magic Area"""
+x = []
+y = []
+intermediateValue = 0
+inertionLink_1 = InertionLink()
+inertionLink_2 = InertionLink()
+inertionLink_3 = InertionLink()
 
+for i in range(1, iterations_count):
+    intermediateValue = Adder.Sum(x[i], intermediateValue)
+    intermediateValue = Amplifier.Amplify(K1, intermediateValue)
+    intermediateValue = inertionLink_1.GetValue(intermediateValue, T1, i)
+    intermediateValue = inertionLink_2.GetValue(intermediateValue, T2, i)
+    intermediateValue = inertionLink_3.GetValue(intermediateValue, T3, i)
+    y.append(intermediateValue)
+    intermediateValue = Amplifier.Amplify(K2, intermediateValue)
 """End of magic Area"""
