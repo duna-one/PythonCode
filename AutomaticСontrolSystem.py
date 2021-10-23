@@ -1,4 +1,5 @@
-from typing import Final	
+from typing import final
+import matplotlib.pyplot as plt
 
 class Adder:
     staticmethod
@@ -86,3 +87,11 @@ _file = open("output.txt", 'w')
 for i in range(0, iterations_count):
     _file.write(i + ": ", x[i] + ", " + y[i] + "\n")
 """End of save to txt file area"""
+
+"""Grafical output area"""
+print("Input values are black, output values are red")
+i = range(1, iterations_count)
+plt.plot(i, x, color = 'k')
+plt.plot(i, y, color = 'r')
+plt.show()
+"""End of grafical output area"""
