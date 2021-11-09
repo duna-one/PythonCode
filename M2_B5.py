@@ -1,4 +1,5 @@
 import random;
+import pickle;
 
 """Create"""
 elements = set(random.sample(range(147,264), 15))
@@ -11,10 +12,7 @@ fileName = fileName + '.bin' #Add file extension
 
 """Write binary file"""
 binFile = open(fileName, 'wb') #Open file to write
-for item in elements:
-    itemStr = str(item) + '\n' #Convert to string
-    byte = itemStr.encode() #Convert to byte
-    binFile.write(byte)
+pickle.dump(elements, binFile)
 binFile.close() #Close file
 
 """Delete elements from memory"""
@@ -22,10 +20,7 @@ elements.clear()
 
 """Read binary file"""
 binFile = open(fileName, "rb") #Open file to read
-newElements = set() #New set
-for line in binFile:
-    item = int(line) #Convert bytes to int
-    newElements.add(item) #Add element to new set
+newElements = pickle.load(binFile) #New set
 binFile.close() #Close file
 
 """Create elementsList"""
