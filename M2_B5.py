@@ -8,7 +8,6 @@ print("Elements:", elements)
 """Get file name"""
 print("Please enter file name:")
 fileName = input()
-fileName = fileName + '.bin' #Add file extension
 
 """Write binary file"""
 binFile = open(fileName, 'wb') #Open file to write
