@@ -1,8 +1,9 @@
 import random;
 
 """Create"""
-elements = set(random.sample(range(147,263), 15))
-print("Elements:\n" + str(list(elements)))
+elements = set(random.sample(range(147,264), 15))
+print("Elements:")
+print(elements)
 
 """Get file name"""
 print("Please enter file name:")
@@ -34,4 +35,4 @@ elementsList.sort() #Sort
 
 """Print"""
 for i in range(0, len(elementsList)):
-    print('Element #:{0} = {1}'.format(i, elementsList[i]))
+    print('Element #:', i, '=', elementsList[i])
