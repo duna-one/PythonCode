@@ -2,8 +2,7 @@ import random;
 
 """Create"""
 elements = set(random.sample(range(147,264), 15))
-print("Elements:")
-print(elements)
+print("Elements:", elements)
 
 """Get file name"""
 print("Please enter file name:")
