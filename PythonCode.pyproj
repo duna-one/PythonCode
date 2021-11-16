@@ -5,7 +5,7 @@
     <ProjectGuid>1b9bfc4e-1ebd-4b2e-9ec8-4738d61cf22c</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
-    <StartupFile>M2_B5.py</StartupFile>
+    <StartupFile>Theme7.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -25,6 +25,7 @@
     <Compile Include="AutomaticСontrolSystem.py" />
     <Compile Include="FunctionsTask.py" />
     <Compile Include="M2_B5.py" />
+    <Compile Include="Theme7.py" />
     <Compile Include="Tuple.py">
       <SubType>Code</SubType>
     </Compile>
