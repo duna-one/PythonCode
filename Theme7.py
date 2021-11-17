@@ -28,13 +28,13 @@ dictionary = TaskFunction(list1, list2)
 #Запись в бинарный файл
 binFile = open("Slovar.bin", "wb") #Открыли файл
 pickle.dump(dictionary, binFile) #Записали словарь в файл
-binFile.close #Закрыли файл
+binFile.close() #Закрыли файл
 
 #Чтение бинарного файла
 newDictionary = dict()
 binFile = open("Slovar.bin", "rb") #Открыли файл
 newDictionary = pickle.load(binFile) #Прочитали словарь из файла
-binFile.close #Закрыли файл
+binFile.close() #Закрыли файл
 
 #Вывели содержимое файла на экран
 for couple in newDictionary.items():
