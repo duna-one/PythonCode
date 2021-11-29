@@ -5,7 +5,7 @@
     <ProjectGuid>1b9bfc4e-1ebd-4b2e-9ec8-4738d61cf22c</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
-    <StartupFile>Var12\main.py</StartupFile>
+    <StartupFile>full_new.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -23,6 +23,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="AutomaticСontrolSystem.py" />
+    <Compile Include="full.py" />
+    <Compile Include="full_new.py" />
     <Compile Include="FunctionsTask.py" />
     <Compile Include="M2_B5.py" />
     <Compile Include="Theme7.py" />
