@@ -1,8 +1,9 @@
 import os, pathlib, sys
 import DBOperations
 
-"""Меню выбора базы данных"""
+
 def DBChoiceMenu():
+    """Меню выбора базы данных"""
     while True:
         print('Выберите пункт меню:')
         print('1. Создать новую БД')
@@ -29,8 +30,8 @@ def DBChoiceMenu():
         else:
             print('Некорректный ввод')
 
-"""Меню работы с базой данных"""
 def WorkWithDBMenu(dbName):
+    """Меню работы с базой данных"""
     work = True
     while work:
         print('Выберите пункт меню:')
@@ -59,6 +60,7 @@ def WorkWithDBMenu(dbName):
             print('Некорректный ввод')
 
 def RowOperationsMenu(dbName):
+    """Операции со строками"""
     work = True
     while work:
         print('Выберите пункт меню:')
@@ -82,26 +84,29 @@ def RowOperationsMenu(dbName):
         else:
             print('Некорректный ввод')
 
-"""Вывод всех доступных баз данных на экран"""
+
 def ShowAvalibleDB():
+    """Вывод всех доступных баз данных на экран"""
     dbfiles = GetDBFiles()
     if len(dbfiles) == 0:
         print('Нет доступных БД')
     else:
-        print('Доступные БД:')
+        print('Доступные БД:') 
         for db in dbfiles:
           print(db)
   
-"""Возвращает список всех доступных баз данных"""
+
 def GetDBFiles():
+    """Возвращает список всех доступных баз данных"""
     dbfiles = []
     for file in os.listdir( pathlib.Path().absolute() ):
         if file.endswith('.sqlite'):
            dbfiles.append(file)
     return dbfiles
 
-"""Сохраняет таблицу из БД в текстовый файл"""
+
 def SaveToFile(dbName):
+    """Сохраняет таблицу из БД в текстовый файл"""
     table = DBOperations.GetTable(dbName)
     fileName = input('Введите имя файла: ')
     txtFile = open(fileName, 'w+')
@@ -109,8 +114,9 @@ def SaveToFile(dbName):
         txtFile.write(str(row))
     txtFile.close()
 
-"""Выводит полученные строки на экран"""
+
 def ShowRows(rows):
+    """Выводит полученные строки на экран"""
     for row in rows:
         print(row)
 
