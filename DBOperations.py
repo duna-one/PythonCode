@@ -2,8 +2,8 @@ import sqlite3
 from sqlite3.dbapi2 import Row
 import time
 
-"""Создание БД"""
 def CreateDB(dbName):
+    """Создание БД"""
     if not str(dbName).endswith('.sqlite'):
         dbName = dbName + '.sqlite'
 
@@ -26,8 +26,9 @@ def CreateDB(dbName):
     cur.close()
     con.close()
 
-"""Добавление строки в БД"""
+
 def AddRow(dbName):
+    """Добавление строки в БД"""
     if not str(dbName).endswith('.sqlite'):
         dbName = dbName + '.sqlite'
 
@@ -42,8 +43,13 @@ def AddRow(dbName):
         except:
             print('Номер семестра должен быть числом')
     
-    type_of_cert = input('Введите тип аттестации (экзамен/зачет): ')
-    
+    while True:
+        type_of_cert = input('Введите тип аттестации (экзамен/зачет): ')
+        if str(type_of_cert).lower() == 'экзамен' or str(type_of_cert).lower() == 'зачет':
+            break
+        else:
+            print('Тип аттестации может быть либо экзамен, либо зачет') 
+            
     while True:
         try:
             date_of_cert = input('Введите дату аттестации (в формате ДД-ММ-ГГГГ): ')
@@ -57,44 +63,39 @@ def AddRow(dbName):
     prof_pos = input('Введите должность преподавателя: ')
 
     while True:
-        mark = int(input('Введите полученную оценку: '))
+        try:
+            mark = int(input('Введите полученную оценку: '))
 
-        if (mark < 0 or mark > 5):
-            print('Неверная оценка! Оценка должна находиться в диапазоне от 0 до 5!')
-        else:
-            break
-
-    # Получение даты занесения записи
+            if (mark < 0 or mark > 5):
+                print('Неверная оценка! Оценка должна находиться в диапазоне от 0 до 5!')
+            else:
+                break
+       except:
+            print('Оценка должна быть числом')
+        
     dat = time.localtime()
     date_of_update = '{:0>2}-{:0>2}-{:0>4}'.format(str(dat.tm_mday), str(dat.tm_mon), str(dat.tm_year))
 
-    # Создание кортежа с данными для занесения в таблицу
     new_data = (code, subject, sem_number, type_of_cert, date_of_cert, prof_fio, prof_pos, mark, date_of_update)
 
-    # Открытие БД
     con = sqlite3.connect(dbName)
-
-    # Создание курсора
     cur = con.cursor()
 
-    # Формирование строки с SQL-запросом
     sql = """\
     INSERT INTO main 
     (code, subject, sem_number, type_of_cert, date_of_cert, prof_fio, prof_pos, mark, date_of_update) 
     VALUES (?,?,?,?,?,?,?,?,?)"""
 
-    # Занесение полученного кортежа в таблицу
     cur.execute(sql, new_data)
 
-    # Сохранение изменений
     con.commit()
 
-    # Закрытие БД
     cur.close()
     con.close()
 
-"""Получение таблицы(содержимого) из бд"""
+
 def GetTable(dbName):
+    """Получение таблицы(содержимого) из бд"""
     if not str(dbName).endswith('.sqlite'):
         dbName = dbName + '.sqlite'
 
@@ -111,8 +112,9 @@ def GetTable(dbName):
 
     return tableData
 
-"""Получение имен столбцов таблицы из бд"""
+
 def GetColumsNames(dbName):
+    """Получение имен столбцов таблицы из бд"""
     if not str(dbName).endswith('.sqlite'):
         dbName = dbName + '.sqlite'
 
@@ -133,8 +135,8 @@ def GetColumsNames(dbName):
 
     return columnNames
 
-"""Удаляет строки по указанному условию"""
 def DelRows(dbName, rule):
+    """Удаляет строки по указанному условию"""
     if not str(dbName).endswith('.sqlite'):
         dbName = dbName + '.sqlite'
 
@@ -150,8 +152,8 @@ def DelRows(dbName, rule):
     cur.close()
     con.close()
 
-"""Изменяет значения в указанном столбце по указанному правилу"""
 def ChangeValue(dbName, value, rule):
+    """Изменяет значения в указанном столбце по указанному правилу"""
     if not str(dbName).endswith('.sqlite'):
         dbName = dbName + '.sqlite'
 
@@ -167,8 +169,9 @@ def ChangeValue(dbName, value, rule):
     cur.close()
     con.close()
 
-"""Выводит строки по указанному правилу(фильтру)"""
+
 def GetRowsByRule(dbName, rule):
+    """Выводит строки по указанному правилу(фильтру)"""
     if not str(dbName).endswith('.sqlite'):
         dbName = dbName + '.sqlite'
 
