@@ -5,7 +5,7 @@
     <ProjectGuid>1b9bfc4e-1ebd-4b2e-9ec8-4738d61cf22c</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
-    <StartupFile>Other\Loik_IDZ_Tema9_-01-19.py</StartupFile>
+    <StartupFile>Main.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>

@@ -1,4 +1,5 @@
 import sqlite3
+from sqlite3.dbapi2 import Row
 import time
 
 """Создание БД"""
@@ -46,7 +47,7 @@ def AddRow(dbName):
     while True:
         try:
             date_of_cert = input('Введите дату аттестации (в формате ДД-ММ-ГГГГ): ')
-            date_of_cert = time.strptime(date_of_cert, '%d-%m-%Y')
+            time.strptime(date_of_cert, '%d-%m-%Y')
             break
         except:
             print('Некорректный ввод')
@@ -109,3 +110,77 @@ def GetTable(dbName):
     con.close()
 
     return tableData
+
+"""Получение имен столбцов таблицы из бд"""
+def GetColumsNames(dbName):
+    if not str(dbName).endswith('.sqlite'):
+        dbName = dbName + '.sqlite'
+
+    con = sqlite3.connect(dbName)
+    cur = con.cursor()
+
+    sql = """\
+    SELECT * FROM main
+    """
+    columns = cur.execute(sql).description
+
+    columnNames = []
+    for column in columns:
+        columnNames.append(column[0])
+
+    cur.close()
+    con.close()
+
+    return columnNames
+
+"""Удаляет строки по указанному условию"""
+def DelRows(dbName, rule):
+    if not str(dbName).endswith('.sqlite'):
+        dbName = dbName + '.sqlite'
+
+    con = sqlite3.connect(dbName)
+    cur = con.cursor()
+
+    sql = """\
+    DELETE FROM main WHERE {0}
+    """.format(rule)
+    cur.execute(sql)
+
+    con.commit()
+    cur.close()
+    con.close()
+
+"""Изменяет значения в указанном столбце по указанному правилу"""
+def ChangeValue(dbName, value, rule):
+    if not str(dbName).endswith('.sqlite'):
+        dbName = dbName + '.sqlite'
+
+    con = sqlite3.connect(dbName)
+    cur = con.cursor()
+
+    sql = """\
+    UPDATE main SET {0} WHERE {1}
+    """.format(value, rule)
+    cur.execute(sql)
+
+    con.commit()
+    cur.close()
+    con.close()
+
+"""Выводит строки по указанному правилу(фильтру)"""
+def GetRowsByRule(dbName, rule):
+    if not str(dbName).endswith('.sqlite'):
+        dbName = dbName + '.sqlite'
+
+    con = sqlite3.connect(dbName)
+    cur = con.cursor()
+
+    sql = """\
+    SELECT * FROM main WHERE {0}
+    """.format(rule)
+    rows =  cur.execute(sql).fetchall()
+
+    cur.close()
+    con.close()
+
+    return rows

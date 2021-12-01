@@ -30,7 +30,7 @@ def DBChoiceMenu():
             print('Некорректный ввод')
 
 """Меню работы с базой данных"""
-def WorkWithDBMenu(dbName):    
+def WorkWithDBMenu(dbName):
     work = True
     while work:
         print('Выберите пункт меню:')
@@ -38,18 +38,45 @@ def WorkWithDBMenu(dbName):
         print('2. Сохранение таблицы в текстовый файл с задаваемым именем')
         print('3. Добавление строки БД')
         print('4. Операции с подмножеством строк')
-        print('5. Отобразить доступные БД')
+        print('5. Отобразить строки по определенному условию')
         print('0. Выйти назад')
         choice = input()
         if choice == '1':
-            table = DBOperations.GetTable(dbName)
-            print(table)
+             ShowRows(DBOperations.GetTable(dbName))
         elif choice == '2':            
             SaveToFile(dbName)
         elif choice == '3':
             DBOperations.AddRow(dbName)
         elif choice == '4':
-            pass
+            RowOperationsMenu(dbName)
+        elif choice == '5':
+            print('Столбцы таблицы:', DBOperations.GetColumsNames(dbName))
+            rule = input('Введите условие отбора строк(например <имястолбца> = \'13\'): ')
+            ShowRows(DBOperations.GetRowsByRule(dbName, rule))
+        elif choice == '0':
+            work = False
+        else:
+            print('Некорректный ввод')
+
+def RowOperationsMenu(dbName):
+    work = True
+    while work:
+        print('Выберите пункт меню:')
+        print('1. Удалить строку из БД')
+        print('2. Заменить значение на заданное')
+        print('0. Выйти назад')
+        choice = input()
+        if choice == '1':
+            print('Столбцы таблицы:', DBOperations.GetColumsNames(dbName))
+            rule = input('Введите условие удаления строки: ')
+            DBOperations.DelRows(dbName, rule)
+            ShowRows(DBOperations.GetTable(dbName))
+        elif choice == '2':            
+            print('Столбцы таблицы:', DBOperations.GetColumsNames(dbName))
+            value = input('Введите новое значение <имя столбца> = <значение>: ')
+            rule = input('Введите условие для замены: ')
+            DBOperations.ChangeValue(dbName, value, rule)
+            ShowRows(DBOperations.GetTable(dbName))
         elif choice == '0':
             work = False
         else:
@@ -74,12 +101,17 @@ def GetDBFiles():
     return dbfiles
 
 """Сохраняет таблицу из БД в текстовый файл"""
-def SaveToFile(table):
+def SaveToFile(dbName):
     table = DBOperations.GetTable(dbName)
     fileName = input('Введите имя файла: ')
     txtFile = open(fileName, 'w+')
     for row in table:
         txtFile.write(str(row))
     txtFile.close()
+
+"""Выводит полученные строки на экран"""
+def ShowRows(rows):
+    for row in rows:
+        print(row)
 
 DBChoiceMenu()
