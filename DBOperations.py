@@ -1,6 +1,7 @@
 import sqlite3
 import time
 
+"""Создание БД"""
 def CreateDB(dbName):
     if not str(dbName).endswith('.sqlite'):
         dbName = dbName + '.sqlite'
@@ -24,6 +25,7 @@ def CreateDB(dbName):
     cur.close()
     con.close()
 
+"""Добавление строки в БД"""
 def AddRow(dbName):
     if not str(dbName).endswith('.sqlite'):
         dbName = dbName + '.sqlite'
@@ -79,6 +81,7 @@ def AddRow(dbName):
     cur.close()
     con.close()
 
+"""Получение таблицы(содержимого) из бд"""
 def GetTable(dbName):
     if not str(dbName).endswith('.sqlite'):
         dbName = dbName + '.sqlite'
