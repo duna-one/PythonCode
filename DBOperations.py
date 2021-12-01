@@ -37,10 +37,19 @@ def AddRow(dbName):
     while True:
         try:
             sem_number = int(input('Введите номер семестра с аттестацией по дисциплине: '))
+            break
+        except:
+            print('Номер семестра должен быть числом')
     
     type_of_cert = input('Введите тип аттестации (экзамен/зачет): ')
     
-    date_of_cert = input('Введите дату аттестации (в формате ДД-ММ-ГГГГ): ')    
+    while True:
+        try:
+            date_of_cert = input('Введите дату аттестации (в формате ДД-ММ-ГГГГ): ')
+            date_of_cert = time.strptime(date_of_cert, '%d-%m-%Y')
+            break
+        except:
+            print('Некорректный ввод')
     
     prof_fio = input('Введите ФИО преподавателя, проводившего аттестацию: ')
     
