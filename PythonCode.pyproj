@@ -5,7 +5,7 @@
     <ProjectGuid>1b9bfc4e-1ebd-4b2e-9ec8-4738d61cf22c</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
-    <StartupFile>Main.py</StartupFile>
+    <StartupFile>Other\Loik_IDZ_Tema9_-01-19.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -39,6 +39,9 @@
   <ItemGroup>
     <Folder Include="Other\" />
     <Folder Include="Other\Var12\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Other\Loik_IDZ_Tema9_-01-19.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

@@ -34,7 +34,9 @@ def AddRow(dbName):
     
     subject = input('Введите название дисциплины: ')
     
-    sem_number = int(input('Введите номер семестра с аттестацией по дисциплине: '))
+    while True:
+        try:
+            sem_number = int(input('Введите номер семестра с аттестацией по дисциплине: '))
     
     type_of_cert = input('Введите тип аттестации (экзамен/зачет): ')
     
