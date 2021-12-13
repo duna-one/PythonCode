@@ -18,8 +18,8 @@ def ShowTable():
 
     while True:
         try:
-            tabel = int(input("Введите номер таблицы: "))
-            if tabel in range(1, len(tabelNames)):
+            table = int(input("Введите номер таблицы: "))
+            if table in range(1, len(tabelNames)):
                 break
             else:
                 print("Таблицы с таким номером не существует!")
