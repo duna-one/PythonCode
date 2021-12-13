@@ -5,7 +5,8 @@
     <ProjectGuid>1b9bfc4e-1ebd-4b2e-9ec8-4738d61cf22c</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
-    <StartupFile>Main.py</StartupFile>
+    <StartupFile>
+    </StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -22,13 +23,13 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="DBOperations.py" />
+    <Compile Include="Nir2\DBOperations.py" />
     <Compile Include="Other\AutomaticСontrolSystem.py" />
     <Compile Include="Other\full.py" />
     <Compile Include="Other\full_new.py" />
     <Compile Include="Other\FunctionsTask.py" />
     <Compile Include="Other\M2_B5.py" />
-    <Compile Include="Main.py" />
+    <Compile Include="Nir2\Main.py" />
     <Compile Include="Other\Theme7.py" />
     <Compile Include="Other\Tuple.py">
       <SubType>Code</SubType>
@@ -37,6 +38,7 @@
     <Compile Include="Other\Var12\shet.py" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Nir2\" />
     <Folder Include="Other\" />
     <Folder Include="Other\Var12\" />
   </ItemGroup>
