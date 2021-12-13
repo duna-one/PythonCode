@@ -5,8 +5,7 @@
     <ProjectGuid>1b9bfc4e-1ebd-4b2e-9ec8-4738d61cf22c</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
-    <StartupFile>
-    </StartupFile>
+    <StartupFile>MainUI.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -23,6 +22,8 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="DBFunctions.py" />
+    <Compile Include="MainUI.py" />
     <Compile Include="Nir2\DBOperations.py" />
     <Compile Include="Other\AutomaticСontrolSystem.py" />
     <Compile Include="Other\full.py" />
