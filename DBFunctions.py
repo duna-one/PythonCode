@@ -13,18 +13,22 @@ def ShowTable():
         tabelNames.append(name[0])
 
     print("Доступные таблицы:\n")
-    print(tabelNames)
+    for i in range(1, len(tabelNames)):
+        print("{}. {}".format(in tabelNames[i])
 
     while True:
-        tabelName = input("Введите имя таблицы: ")
-        if tabelName in tabelNames:
-            break
-        else:
-            print("Такой таблицы не существует!")
+        try:
+            tabel = int(input("Введите номер таблицы: "))
+            if tabel in range(1, len(tabelNames)):
+                break
+            else:
+                print("Таблицы с таким номером не существует!")
+        except:
+            print("Введите число!")
 
     sql = """\
     select * from {}
-    """.format(tabelName)
+    """.format(tabelNames[tabel-1])
 
     columnNames = []
     for name in cur.execute(sql).description:
