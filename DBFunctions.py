@@ -101,3 +101,46 @@ def GetByStatusAndArea():
     print("Результат:")
     for resItem in cur.execute(sql).fetchall():
         print(" - {}".format(resItem[0]))
+
+def GetOnPost():
+
+    while True:
+        print("Доступные варианты выборки по должности: ")
+        print("1. Профессор")
+        print("2. Доцент")
+        print("3. Прочие")
+        print("4. Все")
+        choice = input("Выберите вариант выборки: ")
+        if choice == "1":
+           columnName = "pr"
+           break
+        elif choice == "2":
+           columnName = "dc"
+           break
+        elif choice == "3":
+           columnName = "dn + kn"
+           break
+        else:
+           print("Такого варианта выборки нет.")
+
+    sql = """\
+    SELECT ROW_NUMBER () OVER (ORDER BY fedokr) №, 
+			fedokr as 'Федеральный округ', SUM({0}) as 'Число преподавателей'
+        FROM 
+        	vuz_rf JOIN vuzstat on vuz_rf.cod = vuzstat.codvuz GROUP BY fedokr
+    UNION SELECT '', 'Все', SUM({0}) FROM vuzstat
+    """.format(columnName)
+
+    con = sqlite3.connect("vuz.sqlite")
+    cur = con.cursor()
+
+    cur = cur.execute(sql)
+
+    columnNames = []
+    result = cur.fetchall()
+
+    for name in cur.description:
+        columnNames.append(name[0])
+    print(columnNames)
+    for row in result:
+        print(row)

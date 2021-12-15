@@ -6,6 +6,7 @@ def MainUI():
         print("Меню:")
         print("1. Отобразить таблицу")
         print("2. Отбор по статусу и федеральному округу")
+        print("3. Отобразить количество сотрудников в федеральном округе по должности")
         print("0. Завершить программу")
 
         choice = input("Выберите пункт меню: ")
@@ -13,6 +14,8 @@ def MainUI():
             Db.ShowTable()
         elif choice == "2":
             Db.GetByStatusAndArea()
+        elif choice == "3":
+            Db.GetOnPost()
         elif choice == "0":
             sys.exit();
 
