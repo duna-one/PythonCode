@@ -12,9 +12,9 @@ def ShowTable():
     for name in cur.execute(sql).fetchall():
         tabelNames.append(name[0])
 
-    print("Доступные таблицы:\n")
-    for i in range(1, len(tabelNames)):
-        print("{}. {}".format(in tabelNames[i])
+    print("Доступные таблицы:")
+    for i in range(0, len(tabelNames)):
+        print("{}. {}".format(i+1, tabelNames[i]))
 
     while True:
         try:
@@ -28,7 +28,7 @@ def ShowTable():
 
     sql = """\
     select * from {}
-    """.format(tabelNames[tabel-1])
+    """.format(tabelNames[table-1])
 
     columnNames = []
     for name in cur.execute(sql).description:
@@ -65,8 +65,8 @@ def GetByStatusAndArea():
 
     #Выбор округа
     print("Доступные федеральные округа: ")
-    for i in range(1, len(FedOkr)):
-        print("{}. {}".format(i, FedOkr[i-1]))
+    for i in range(0, len(FedOkr)):
+        print("{}. {}".format(i+1, FedOkr[i]))
 
     while True:
         try:
@@ -80,8 +80,8 @@ def GetByStatusAndArea():
 
     #Выбор статуса
     print("Доступные статусы: ")
-    for i in range(1, len(Status)):
-        print("{}. {}".format(i, Status[i-1]))
+    for i in range(0, len(Status)):
+        print("{}. {}".format(i+1, Status[i]))
 
     while True:
         try:
