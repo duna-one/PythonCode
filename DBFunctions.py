@@ -81,7 +81,7 @@ def GetByStatusAndArea():
     #Выбор статуса
     print("Доступные статусы: ")
     for i in range(0, len(Status)):
-        print("{}. {}".format(i+1, Status[i]))
+        print("{}. {}".format(i+1, Status[i])+1)
 
     while True:
         try:
