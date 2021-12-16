@@ -70,7 +70,7 @@ def GetByStatusAndArea():
 
     while True:
         try:
-            SelectedOkr = int(input("Введите номер округа (или несколько через пробел): "))
+            SelectedOkr = int(input("Введите номер округа: "))
             if SelectedOkr in range(1, len(FedOkr) + 1):
                 break;
             else:
@@ -81,12 +81,12 @@ def GetByStatusAndArea():
     #Выбор статуса
     print("Доступные статусы: ")
     for i in range(0, len(Status)):
-        print("{}. {}".format(i+1, Status[i])+1)
+        print("{}. {}".format(i+1, Status[i]))
 
     while True:
         try:
-            SelectedStatus = int(input("Введите номер округа: "))
-            if SelectedStatus in range(1, len(Status)):
+            SelectedStatus = int(input("Введите номер статуса: "))
+            if SelectedStatus in range(1, len(Status)+1):
                 break;
             else:
                 print("Некорректный ввод!")
