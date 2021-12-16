@@ -19,7 +19,7 @@ def ShowTable():
     while True:
         try:
             table = int(input("Введите номер таблицы: "))
-            if table in range(1, len(tabelNames)):
+            if table in range(1, len(tabelNames) + 1):
                 break
             else:
                 print("Таблицы с таким номером не существует!")
@@ -71,7 +71,7 @@ def GetByStatusAndArea():
     while True:
         try:
             SelectedOkr = int(input("Введите номер округа (или несколько через пробел): "))
-            if SelectedOkr in range(1, len(FedOkr)):
+            if SelectedOkr in range(1, len(FedOkr) + 1):
                 break;
             else:
                 print("Некорректный ввод!")
